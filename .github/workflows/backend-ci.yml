@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./fullstackproject
+        working-directory: ./backend/fullstackproject
 
     services:
       postgres:
