@@ -5,7 +5,7 @@ on:
     branches:
       - "main"
     paths:
-      - "fullstackproject/**"
+      - "backend/**"
 jobs:
   build:
     runs-on: ubuntu-latest
