@@ -5,11 +5,13 @@ on:
     branches:
       - "main"
     paths:
-      - "backend/**"
-
+      - "./backend/**"
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./fullstackproject
 
     services:
       postgres:
@@ -24,20 +26,14 @@ jobs:
           --health-timeout 5s
           --health-retries 5
         ports:
-          - 5432:5432
+          - 5332:5432
 
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
           cache: 'maven'
-
-      - name: Verify directory structure
-        run: ls -al ./fullstackproject/backend
-
       - name: Build and run with Maven
-        working-directory: ./fullstackproject/backend
         run: mvn -ntp -B install
